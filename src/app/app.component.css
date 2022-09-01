@@ -1,0 +1,35 @@
+.nav-bar
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.445);
+}
+
+.logo
+{
+    font-weight: 600;
+    padding: 0 2%;
+    width: 8%;
+}
+.event-mem
+{
+    width: 80%;
+}
+.event-mem span
+{
+    margin-right: 2%;
+    cursor: pointer;
+}
+.login-reg 
+{
+    width: 8%;
+}
+.login-reg  span
+{
+    cursor: pointer;
+    margin-right: 20%;
+}
+
+

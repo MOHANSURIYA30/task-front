@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+select:focus, input:focus{
+    outline: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  .apexcharts-legend-text
+  {
+      color: white !important;
+  }
+
+   path
+  {
+      stroke: transparent !important;
+  }
+
+  

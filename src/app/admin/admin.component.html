@@ -1,0 +1,129 @@
+<div class="admin-container" >
+    <div class="overlay" >
+       <div class="overlay-content">
+        <div class="overlay-top" >
+            <h4>Edit Status</h4>
+            <ion-icon name="close" (click)="closeOverlay()" class="close-overlay"></ion-icon>
+        </div>
+        <div class="overlay-middle" >
+        <div>
+            <span>Employee</span>
+            <span>{{editTaskData.employee.user_id}}</span>
+        </div> 
+        <div>
+            <span>Task</span>
+            <span>{{editTaskData.task}}</span>
+        </div> 
+        <div>
+            <span>Status</span>
+            <select [formControl]="status">
+                <option value="completed">completed</option>
+                <option value="pending">pending</option>
+                <option value="current">current</option>
+            </select>
+        </div>     
+        </div>
+        <div style="display: flex;width: 100%;">
+            <button (click)="onupdate()" class="update-btn btn"  >Update</button>
+        </div>
+       </div>
+    </div>
+    <div class="top-bar">
+        <h2 style="font-size: 150%;">Task Managment</h2>
+        <div class="top-last"  >
+
+           
+            <div style="display: flex;align-items: center;">
+                <ion-icon  name="person-circle"></ion-icon>
+                <div class="u-name" >{{id}}</div>
+            </div> 
+            <ion-icon name="repeat"></ion-icon>
+            <ion-icon name="notifications"></ion-icon>
+               
+        </div>
+       
+    </div>
+    <div class="dash-container">
+        <div class="dash-content-1" >
+            <div class="chart-content" >
+                <h4>Task Status</h4>
+                <div id="chart">
+                    <apx-chart
+                      [series]="Taskcounts" 
+                      [chart]="chartOptions.chart"
+                      [labels]="chartOptions.labels"
+                      [responsive]="chartOptions.responsive"
+                    ></apx-chart>
+                  </div>
+            </div>
+            <div class="table-content" >
+                <h4>Task Details</h4>
+                 <table>
+                    <tr>
+                      <th>No</th>
+                      <th>Employee</th>
+                      <th>Task</th>
+                      <th>Status</th>
+                      <th>Change</th>
+                    </tr>
+                  
+                   
+                    <tr *ngFor="let task of taskDetails;let i=index;">
+                        <td>{{i+1}}</td>
+                      <td>{{task.employee.user_id | titlecase}}</td>
+                      <td>{{task.task | titlecase }}</td>
+                      <td>{{task.status | titlecase}}</td>
+                      <td><button (click)=" onEditStatus(task)" class="edit-btn">Edit Status</button></td>
+                    </tr>
+                  
+                </table>
+            </div>
+    
+    
+        </div>
+        <div class="dash-content-2" >
+           
+            <div class="add-emp">
+            <h4>Add Employee</h4>
+               <form [formGroup]="employeeForm" (ngSubmit)="submitEmployee()" >
+                   <div class="input-container" >
+                       <label for="emp">Employee ID</label>
+                       <input formControlName="user_id" placeholder="Employee ID" type="text">
+                   </div>
+                   <div class="input-container">
+                    <label for="password">Password</label>
+                    <input formControlName="password"  placeholder="Password" type="password">
+                  </div> 
+                  <div style="display: flex;flex-direction: column;" >
+                     <button class="btn" type="submit" >Create</button> 
+                  </div>
+                      
+                </form>
+           </div>
+           <div class="add-task">
+            <h4>Add Task</h4>
+            <form [formGroup]="taskForm" (ngSubmit)="submitTask()">
+                <div class="input-container" >
+                    <label for="emp">Employee ID</label>
+                    <select formControlName="employee" placeholder="Select Employee"  >
+                        <option value="">Employee ID</option>
+                        <option *ngFor="let employees of employeeList" [value]="employees._id">{{employees.user_id}}</option>
+                    </select>
+                </div>
+                <div class="input-container">
+                 <label for="task"  >Task</label>
+                 <input type="text" placeholder="Enter Task" formControlName="task">
+               </div> 
+               <div style="display: flex;flex-direction: column;" >
+                  <button type="submit" class="btn" >Add</button> 
+               </div>
+                   
+            </form>
+        </div>
+        </div>
+     
+          
+    </div>
+  
+
+</div>
